@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="border-b border-neutral-900 pb-4 p-8">
+        <h2 class="my-20 text-center text-4xl">Projects</h2>
+        <div class="flex-col flex-wrap justify-center align-middle">
+            <!-- JavaScript loop to dynamically generate project cards -->
+            <script>
+                const PROJECTS = [
+                    {
+                        title: "Classify-Classroom Management System",
+                        image: "../images/project-1.jpg",
+                        description: "A website to manage all your classrooms in one system",
+                        technologies: ["HTML", "CSS", "php", "mySQL"],
+                    },
+                    {
+                        title: "Krator",
+                        image: "../images/project-2.jpg",
+                        description: "A website to create Book covers",
+                        technologies: ["Nextjs", "TailwindCSS", "Firebase", "OpenAI"],
+                    },
+                    {
+                        title: "Practice Partner",
+                        image: "../images/project-3.jpg",
+                        description: "A website to generate image and prompts",
+                        technologies: ["React", "TailwindCSS", "NodeJs", "OpenAI", "Firebase"],
+                    },
+                    {
+                        title: "Portfolio Website",
+                        image: "../images/project-4.jpg",
+                        description: "A personal portfolio website showcasing projects, skills, and contact information.",
+                        technologies: ["React", "TailwindCSS"],
+                    },
+                ];
+
+                // Loop through PROJECTS array to generate project cards
+                PROJECTS.forEach((project, index) => {
+                    document.write(`
+                        <div class="w-full lg:w-1/4 mb-8 flex flex-wrap">
+                            <div class="w-full lg:w-1/2">
+                                <img src="${project.image}" alt="${project.title}" class="mb-6 rounded">
+                            </div>
+                            <div class="w-full lg:w-1/2 max-w-xl">
+                                <h6 class="mb-2 font-semibold">${project.title}</h6>
+                                <p class="mb-4 text-neutral-400">${project.description}</p>
+                                <div>
+                                    ${project.technologies.map(tech => `<span class="mr-2 rounded bg-neutral-900 px-2 py-1 text-sm font-medium text-purple-900">${tech}</span>`).join('')}
+                                </div>
+                            </div>
+                        </div>
+                    `);
+                });
+            </script>
+        </div>
+    </div>
+
+                <div class="w-full lg:w-1/4 mb-8 flex flex-wrap">
+                    <div class="w-full lg:w-1/2">
+                        <img src="none" alt="new" class="mb-6 rounded">
+                    </div>
+                    <div class="w-full lg:w-1/2 max-w-xl">
+                        <h6 class="mb-2 font-semibold">new</h6>
+                        <p class="mb-4 text-neutral-400">abcdssssssssssss</p>
+                        <div>
+                            <span class="mr-2 rounded bg-neutral-900 px-2 py-1 text-sm font-medium text-purple-900">react</span>
+                        </div>
+                    </div>
+                </div>
+            
+                <div class="w-full lg:w-1/4 mb-8 flex flex-wrap">
+                    <div class="w-full lg:w-1/2">
+                        <img src="none" alt="Bindulogic" class="mb-6 rounded">
+                    </div>
+                    <div class="w-full lg:w-1/2 max-w-xl">
+                        <h6 class="mb-2 font-semibold">Bindulogic</h6>
+                        <p class="mb-4 text-neutral-400">First training project</p>
+                        <div>
+                            <span class="mr-2 rounded bg-neutral-900 px-2 py-1 text-sm font-medium text-purple-900">Javascript</span>
+                        </div>
+                    </div>
+                </div>
+            </body>
+</html>
