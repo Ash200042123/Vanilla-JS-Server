@@ -6,11 +6,6 @@ const path = require('path');
 const port = 3000;
 
 
-const PROJECTS_JSON_PATH = './all-projects.json';
-
-if (!fs.existsSync(PROJECTS_JSON_PATH)) {
-    fs.writeFileSync(PROJECTS_JSON_PATH, '[]');
-}
 
 
 const httpServer = http.createServer((req,res)=>{
@@ -21,7 +16,7 @@ const httpServer = http.createServer((req,res)=>{
     }else if (req.method === 'POST' && req.url === '/project/new') {
         handleNewProject(req, res);
     } else if (req.url === '/project/new') {
-        // Handle POST request to add new project
+        
         readFile('pages/new-project.html',res);
     }
     else{
@@ -43,7 +38,7 @@ const handleNewProject = (req, res) => {
             projectData[key] = value;
         }
 
-        // Read the existing projects HTML
+        
         fs.readFile('pages/projects.html', 'utf8', (err, data) => {
             if (err) {
                 console.error('Error reading projects HTML:', err);
@@ -52,9 +47,8 @@ const handleNewProject = (req, res) => {
                 return;
             }
 
-            // Append new project HTML to the end of the file
             const newProjectHTML = `
-                <div class="w-full lg:w-1/4 mb-8 flex flex-wrap">
+                <div class="w-full lg:w-1/4 mb-8 flex flex-wrap p-8">
                     <div class="w-full lg:w-1/2">
                         <img src="${projectData.image}" alt="${projectData.title}" class="mb-6 rounded">
                     </div>
@@ -69,7 +63,7 @@ const handleNewProject = (req, res) => {
             `;
             const updatedHTML = data.replace('</body>', `${newProjectHTML}</body>`);
 
-            // Write updated HTML back to the file
+            
             fs.writeFile('pages/projects.html', updatedHTML, 'utf8', (err) => {
                 if (err) {
                     console.error('Error updating projects HTML:', err);
@@ -77,7 +71,7 @@ const handleNewProject = (req, res) => {
                     res.end('Internal Server Error');
                     return;
                 }
-                // Redirect to the projects page
+                
                 res.writeHead(302, { 'Location': '/projects' });
                 res.end();
             });
